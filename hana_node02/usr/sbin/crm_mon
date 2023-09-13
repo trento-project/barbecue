@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+fakemall exec /etc/config.toml "crm_mon $*"
