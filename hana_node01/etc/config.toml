@@ -63,6 +63,13 @@ output = """
 """
 
 [[commands]]
+matches = "sappfpar SAPSYSTEMNAME SAPGLOBALHOST SAPFQDN SAPDBHOST dbs/hdb/dbname dbs/hdb/schema rdisp/msp/msserv rdisp/msserv_internal name=MCK"
+output = """
+0     hana01	clear
+1     hana02	clear
+"""
+
+[[commands]]
 matches = "crm_mon -X --inactive"
 output = """
 <?xml version="1.0"?>

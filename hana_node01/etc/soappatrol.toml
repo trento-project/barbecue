@@ -1,0 +1,62 @@
+[[request]]
+action = "''"
+tagname = "GetInstanceProperties"
+response = """
+<GetInstancePropertiesResponse xmlns="urn:SAPControl">
+  <properties>
+    <item>
+      <property>INSTANCE_NAME</property>
+      <propertytype>string</propertytype>
+      <value>MCK</value>
+    </item>
+    <item>
+      <property>SAPLOCALHOST</property>
+      <propertytype>string</propertytype>
+      <value>hana_node01</value>
+    </item>
+    <item>
+      <property>SAPSYSTEM</property>
+      <propertytype>string</propertytype>
+      <value>00</value>
+    </item>
+  </properties>
+</GetInstancePropertiesResponse>
+"""
+
+[[request]]
+action = "''"
+tagname = "GetProcessList"
+response = """
+<GetProcessListResponse xmlns="urn:SAPControl">
+  <process>
+    <item>
+      <name>MockProcess</name>
+      <description>Mock process</description>
+      <dispstatus>SAPControl-GREEN</dispstatus>
+      <textstatus>ok</textstatus>
+      <starttime>12:00</starttime>
+      <endtime>12:01</endtime>
+      <pid>123</pid>
+    </item>
+  </process>
+</GetProcessListResponse>
+"""
+
+[[request]]
+action = "''"
+tagname = "GetSystemInstanceList"
+response = """
+<GetSystemInstanceListResponse xmlns="urn:SAPControl">
+  <instance>
+    <item>
+      <hostname>hana_node01</hostname>
+      <instanceNr>00</instanceNr>
+      <httpPort>80</httpPort>
+      <httpsPort>443</httpsPort>
+      <startPriority>high</startPriority>
+      <features>MESSAGESERVER</features>
+      <dispstatus>SAPControl-GREEN</dispstatus>
+    </item>
+  </instance>
+</GetSystemInstanceListResponse>
+"""
