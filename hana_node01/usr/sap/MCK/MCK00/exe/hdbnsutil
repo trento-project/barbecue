@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+fakemall exec /etc/config.toml "/usr/sap/MCK/MCK00/exe/hdbnsutil $*"

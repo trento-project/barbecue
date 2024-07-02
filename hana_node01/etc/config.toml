@@ -63,6 +63,13 @@ output = """
 """
 
 [[commands]]
+matches = "sappfpar SAPSYSTEMNAME SAPGLOBALHOST SAPFQDN SAPDBHOST dbs/hdb/dbname dbs/hdb/schema rdisp/msp/msserv rdisp/msserv_internal name=MCK"
+output = """
+0     hana01	clear
+1     hana02	clear
+"""
+
+[[commands]]
 matches = "crm_mon -X --inactive"
 output = """
 <?xml version="1.0"?>
@@ -427,4 +434,104 @@ output = """
     </node_state>
   </status>
 </cib>
+"""
+
+[[commands]]
+matches = "python /usr/sap/MCK/MCK00/exe/python_support/systemReplicationStatus.py --sapcontrol=1"
+output = """
+SAPCONTROL-OK: <begin>
+service/hana_node01/30001/SHIPPED_LOG_POSITION_TIME=2021-06-12 12:43:13.059197
+service/hana_node01/30001/LAST_LOG_POSITION_TIME=2021-06-12 12:43:13.059197
+service/hana_node01/30001/SHIPPED_FULL_REPLICA_DURATION=4060418
+service/hana_node01/30001/SHIPPED_LAST_DELTA_REPLICA_START_TIME=-
+service/hana_node01/30001/SHIPPED_FULL_REPLICA_SIZE=1913069568
+service/hana_node01/30001/SITE_ID=1
+service/hana_node01/30001/LAST_LOG_POSITION=37624000
+service/hana_node01/30001/SECONDARY_ACTIVE_STATUS=YES
+service/hana_node01/30001/LAST_SAVEPOINT_LOG_POSITION=37624081
+service/hana_node01/30001/FULL_SYNC=DISABLED
+service/hana_node01/30001/OPERATION_MODE=logreplay
+service/hana_node01/30001/SHIPPED_LAST_FULL_REPLICA_START_TIME=2021-06-11 08:43:29.183940
+service/hana_node01/30001/LAST_SAVEPOINT_VERSION=510
+service/hana_node01/30001/LAST_SAVEPOINT_START_TIME=2021-06-12 12:45:11.401787
+service/hana_node01/30001/SERVICE_NAME=nameserver
+service/hana_node01/30001/PORT=30001
+service/hana_node01/30001/SHIPPED_DELTA_REPLICA_COUNT=0
+service/hana_node01/30001/LAST_RESET_TIME=2021-06-11 08:43:19.530050
+service/hana_node01/30001/SECONDARY_FAILOVER_COUNT=0
+service/hana_node01/30001/SHIPPED_FULL_REPLICA_COUNT=1
+service/hana_node01/30001/SHIPPED_LOG_BUFFERS_DURATION=139833248
+service/hana_node01/30001/REPLICATION_STATUS_DETAILS=
+service/hana_node01/30001/SHIPPED_DELTA_REPLICA_SIZE=0
+service/hana_node01/30001/SHIPPED_LOG_POSITION=37624000
+service/hana_node01/30001/SHIPPED_DELTA_REPLICA_DURATION=0
+service/hana_node01/30001/RESET_COUNT=0
+service/hana_node01/30001/SHIPPED_LAST_DELTA_REPLICA_SIZE=0
+service/hana_node01/30001/SHIPPED_LAST_DELTA_REPLICA_END_TIME=-
+service/hana_node01/30001/SITE_NAME=Site1
+service/hana_node01/30001/SECONDARY_SITE_NAME=Site2
+service/hana_node01/30001/REPLAYED_LOG_POSITION_TIME=2021-06-12 12:43:13.059197
+service/hana_node01/30001/SHIPPED_LAST_FULL_REPLICA_END_TIME=2021-06-11 08:43:33.244358
+service/hana_node01/30001/CREATION_TIME=2021-06-11 08:43:19.530050
+site/2/SITE_NAME=Site2
+site/2/SOURCE_SITE_ID=1
+site/2/REPLICATION_MODE=SYNC
+site/2/REPLICATION_STATUS=ERROR
+overall_replication_status=ERROR
+site/1/REPLICATION_MODE=PRIMARY
+site/1/SITE_NAME=Site1
+local_site_id=1
+SAPCONTROL-OK: <end>
+"""
+
+[[commands]]
+matches = "python /usr/sap/MCK/MCK00/exe/python_support/landscapeHostConfiguration.py --sapcontrol=1"
+output = """
+SAPCONTROL-OK: <begin>
+hostActualRoles=worker
+removeStatus=
+nameServerConfigRole=master 1
+failoverStatus=
+hostConfigRoles=worker
+failoverActualGroup=default
+storageConfigPartition=1
+host=hana_node01
+indexServerConfigRole=worker
+failoverConfigGroup=default
+storageActualPartition=1
+indexServerActualRole=master
+nameServerActualRole=master
+hostActive=yes
+workerActualGroups=default
+workerConfigGroups=default
+hostStatus=ok
+storagePartition=1
+SAPCONTROL-OK: <end>
+"""
+
+[[commands]]
+matches = "/usr/sap/MCK/MCK00/exe/hdbnsutil -sr_state -sapcontrol=1"
+output = """
+SAPCONTROL-OK: <begin>
+online=true
+mode=primary
+operation mode=primary
+site id=1
+site name=Site1
+isSource=true
+isConsumer=false
+hasConsumers=true
+isTakeoverActive=false
+isPrimarySuspended=false
+mapping/hana_node01=Site2/hana02
+mapping/hana_node01=Site1/hana_node01
+siteTier/Site1=1
+siteTier/Site2=2
+siteReplicationMode/Site1=primary
+siteReplicationMode/Site2=sync
+siteOperationMode/Site1=primary
+siteOperationMode/Site2=logreplay
+siteMapping/Site1=Site2
+SAPCONTROL-OK: <end>
+done.
 """
