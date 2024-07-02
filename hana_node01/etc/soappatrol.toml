@@ -7,7 +7,7 @@ response = """
     <item>
       <property>INSTANCE_NAME</property>
       <propertytype>string</propertytype>
-      <value>MCK</value>
+      <value>MCK00</value>
     </item>
     <item>
       <property>SAPLOCALHOST</property>
@@ -18,6 +18,11 @@ response = """
       <property>SAPSYSTEM</property>
       <propertytype>string</propertytype>
       <value>00</value>
+    </item>
+    <item>
+      <property>SAPSYSTEMNAME</property>
+      <propertytype>string</propertytype>
+      <value>MCK</value>
     </item>
   </properties>
 </GetInstancePropertiesResponse>
@@ -54,7 +59,7 @@ response = """
       <httpPort>80</httpPort>
       <httpsPort>443</httpsPort>
       <startPriority>high</startPriority>
-      <features>MESSAGESERVER</features>
+      <features>HDB</features>
       <dispstatus>SAPControl-GREEN</dispstatus>
     </item>
   </instance>
