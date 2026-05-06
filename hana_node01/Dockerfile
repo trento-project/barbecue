@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: SUSE LLC
+# SPDX-License-Identifier: Apache-2.0
+
 # Fetch and build the agent
 # The agent is built in a separate stage to avoid copying the whole repository into the final image
 FROM golang as agent-builder
