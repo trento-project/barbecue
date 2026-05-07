@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: SUSE LLC
+# SPDX-License-Identifier: Apache-2.0
+
 name: Docker
 
 # This workflow uses actions that are not certified by GitHub.
@@ -35,6 +38,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
+
+      # Run SkyWalking Eyes to check license headers.
+      - uses: apache/skywalking-eyes/header@61275cc80d0798a405cb070f7d3a8aaf7cf2c2c1 # v0.8.0
+        name: Check license Headers
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
