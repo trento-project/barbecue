@@ -1,5 +1,5 @@
 # SPDX-FileCopyrightText: SUSE LLC
-# SPDX-License-Identifier: Apache-2.0
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 # Fetch and build the agent
 # The agent is built in a separate stage to avoid copying the whole repository into the final image
